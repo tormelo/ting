@@ -15,8 +15,9 @@ class Queue(AbstractQueue):
         self._length += 1
 
     def dequeue(self):
-        removed_element = self._data.popleft()
-        if removed_element:
+        try:
+            removed_element = self._data.popleft()
+        finally:
             self._length -= 1
             return removed_element
 
